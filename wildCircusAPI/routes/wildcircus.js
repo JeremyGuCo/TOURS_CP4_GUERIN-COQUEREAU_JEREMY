@@ -161,4 +161,40 @@ router.get('/messages', (req, res) => {
    });
 });
 
+router.post('/shows', (req, res) => {
+   const formData = req.body;
+   db.query('INSERT INTO shows SET ?', formData, (err, results) => {
+      if (err) {
+         res.status(500).send("Erreur lors de l'enregistrement d'un nouveau spectacle");
+         return
+      }
+      if (!results) {
+         res.status(400).send();
+         return;
+      }
+      db.query('SELECT * FROM shows WHERE id = ?', results.insertId, (err, results) => {
+         if (err) {
+            res.status(500).send();
+            return;
+         }
+         res.status(201).send(results[0]);
+      });
+   });
+});
+
+router.get('/shows', (req, res) => {
+   const idPlaylist = req.params.id;
+   db.query('SELECT * FROM shows', idPlaylist, (err, results) => {
+      if (err) {
+         res.status(500).send("Erreur lors de la récupération des spectacles");
+         return;
+      }
+      if (!results.length) {
+         res.status(404).send("Aucun résultat");
+         return;
+      }
+      res.status(200).json(results);
+   });
+});
+
 module.exports = router;
