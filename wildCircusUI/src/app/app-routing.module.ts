@@ -6,6 +6,7 @@ import { ArtistsComponent } from './features/artists/artists.component';
 import { BookingsComponent } from './features/bookings/bookings.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { AdminComponent } from './features/admin/admin.component';
+import { BookingAdminComponent } from './features/booking-admin/booking-admin.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'booking', component: BookingsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'bookingAdmin', component: BookingAdminComponent },
 
 ];
 

@@ -28,17 +28,15 @@
 
 <div *ngIf="!isShow" class="side-nav" [ngClass]="{'sideNaveOpen': openNav, 'sideNaveClose': closeNav}">
   <span (click)='onOpenNav()' class='burger'>&#9776;</span>
-  <a><i class="fa fa-home font nav-link" aria-hidden="true" [routerLink]="[ 'home' ]">&nbsp;&nbsp;&nbsp;Accueil</i></a>
-  <a><i class="fa fa-id-card-o font nav-link" aria-hidden="true" [routerLink]="[ 'presentation' ]">
-      &nbsp;&nbsp;Messages</i></a>
-  <a><i class="fa fa-users font nav-link" aria-hidden="true" [routerLink]="[ 'activites' ]"> &nbsp;&nbsp;Réservations</i></a>
-  <a><i class="fa fa-industry font nav-link" aria-hidden="true" [routerLink]="[ 'produits' ]"> &nbsp;&nbsp;Artistes</i></a>
-  <a><i class="fa fa-sign-out font nav-link" aria-hidden="true" [routerLink]="[ 'home' ]" (click)="logout()">
-      &nbsp;&nbsp;Déconnexion</i></a>
+  <a class="nav-link" aria-hidden="true" [routerLink]="[ 'presentation' ]">
+      Messages</a>
+  <a class="nav-link" aria-hidden="true" [routerLink]="[ 'bookingAdmin' ]"> Réservations</a>
+  <a class="nav-link" aria-hidden="true" [routerLink]="[ 'produits' ]"> Artistes</a>
+  <a class="nav-link" [routerLink]="[ '' ]" (click)="admin()">Deconnexion</a>
 </div>
 
 <div [ngClass]="{'mainClose': closeNav, 'mainOpen': openNav}">
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
 
 <app-footer (adminCon)="showNavbar($event)"></app-footer>

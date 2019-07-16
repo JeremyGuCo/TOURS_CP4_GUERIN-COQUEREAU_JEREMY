@@ -14,6 +14,10 @@ import { ContactComponent } from './features/contact/contact.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistCardComponent } from './shared/artist-card/artist-card.component';
+import { FormsModule } from '@angular/forms';
+import { BookingAdminComponent } from './features/booking-admin/booking-admin.component';
+import { ShowCardComponent } from './shared/show-card/show-card.component';
+import { BookingCardComponent } from './shared/booking-card/booking-card.component';
 
 
 @NgModule({
@@ -28,13 +32,17 @@ import { ArtistCardComponent } from './shared/artist-card/artist-card.component'
     ContactComponent,
     AdminComponent,
     ArtistCardComponent,
+    BookingAdminComponent,
+    ShowCardComponent,
+    BookingCardComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

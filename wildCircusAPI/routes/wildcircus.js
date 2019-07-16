@@ -147,8 +147,7 @@ router.get('/bookings', (req, res) => {
 // - En tant qu'administrateur, je veux pouvoir accéder aux messages reçus
 
 router.get('/messages', (req, res) => {
-   const idMessage = req.params.id;
-   db.query('SELECT * FROM messages', idMessage, (err, results) => {
+   db.query('SELECT * FROM messages', (err, results) => {
       if (err) {
          res.status(500).send("Erreur lors de la récupération des messages");
          return;
@@ -217,5 +216,34 @@ router.get('/shows/:id/artists', (req, res) => {
    });
 });
 
+router.get('/shows/:id', (req, res) => {
+   const idShow = req.params.id;
+   db.query('SELECT * FROM shows  WHERE id = ?', idShow, (err, results) => {
+      if (err) {
+         res.status(500).send("Erreur lors de la récupération des spectacles");
+         return;
+      }
+      if (!results.length) {
+         res.status(404).send("Aucun résultat");
+         return;
+      }
+      res.status(200).json(results);
+   });
+});
+
+router.get('/shows/:id/bookings', (req, res) => {
+   const idShow = req.params.id;
+   db.query('SELECT * FROM bookings WHERE show_id = ?', idShow, (err, results) => {
+      if (err) {
+         res.status(500).send("Erreur lors de la récupération des réservations");
+         return;
+      }
+      if (!results.length) {
+         res.status(404).send("Aucun résultat");
+         return;
+      }
+      res.status(200).json(results);
+   });
+});
 
 module.exports = router;

@@ -17,6 +17,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  admin() {
+    this.isShow = !this.isShow;
+  }
+
   showNavbar(isAdmin){
     this.isShow = isAdmin;
   }

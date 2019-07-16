@@ -19,4 +19,9 @@ export class ShowService {
   getAllShows(): Observable<Show[]> {
     return this.http.get<Show[]>(`${this.api}/shows`);
   }
+
+  getShowByID(id: number): Observable<Show[]> {
+    return this.http.get<Show[]>(`${this.api}/shows/${id}`);
+}
+
 }
