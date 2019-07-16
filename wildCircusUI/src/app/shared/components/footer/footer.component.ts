@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  public isShow: boolean = true;
+
+  @Output() 
+  adminCon = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
   }
 
+  admin() {
+    this.isShow = !this.isShow;
+    this.adminCon.emit(this.isShow)
+  }
 }

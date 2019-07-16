@@ -12,6 +12,9 @@ import { ArtistsComponent } from './features/artists/artists.component';
 import { BookingsComponent } from './features/bookings/bookings.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { AdminComponent } from './features/admin/admin.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ArtistCardComponent } from './shared/artist-card/artist-card.component';
+
 
 @NgModule({
   declarations: [
@@ -23,12 +26,15 @@ import { AdminComponent } from './features/admin/admin.component';
     ArtistsComponent,
     BookingsComponent,
     ContactComponent,
-    AdminComponent
+    AdminComponent,
+    ArtistCardComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

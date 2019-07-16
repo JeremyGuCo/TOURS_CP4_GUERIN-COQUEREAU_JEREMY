@@ -1,0 +1,90 @@
+ .side-nav {
+   min-height: 100%;
+   width: 40px;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   background-color: #262626;
+   overflow-x: hidden;
+   transition: 0.5s;
+   padding-top: 60px;
+ }
+
+ h2 {
+   padding: 8px 8px 8px 32px;
+ }
+
+
+ .side-nav a {
+   padding: 8px 8px 8px 32px;
+   text-decoration: none;
+   font-size: 20px;
+   color: #ffffff;
+   display: block;
+   transition: 0.3s;
+ }
+
+ i {
+   padding: 8px 8px 8px 32px;
+   text-decoration: none;
+   font-size: 25px;
+   color: #ffffff;
+   display: block;
+   transition: 0.3s;
+ }
+
+ .side-nav a:hover {
+   color: #f1f1f1;
+   cursor: pointer;
+ }
+
+ .burger {
+   color: white;
+   font-size: 40px;
+   cursor: pointer;
+   margin-left: 5%;
+ }
+
+ span {
+   color: #0681d1;
+   font-size: 15px;
+   cursor: pointer;
+
+ }
+
+ #main {
+   transition: margin-left .5s;
+   padding: 16px;
+   margin-left: 30px;
+ }
+
+ @media screen and (max-height: 450px) {
+   .sidenav {
+     padding-top: 16px;
+   }
+
+   .sidenav a {
+     font-size: 15px;
+   }
+ }
+
+ .sideNaveOpen {
+   width: 260px;
+ }
+
+ .mainOpen {
+   margin-left: 280px;
+ }
+
+ .mainClose {
+   margin-left: 60px;
+ }
+
+ .font {
+   font-size: 18px;
+ }
+
+ .fa {
+   cursor: pointer;
+ }

@@ -59,8 +59,8 @@ router.post('/messages', (req, res) => {
 // - En tant qu'utilisateur, je veux pouvoir accéder à la liste des artistes
 
 router.get('/artists', (req, res) => {
-   const idPlaylist = req.params.id;
-   db.query('SELECT * FROM artists', idPlaylist, (err, results) => {
+   const idArtist = req.params.id;
+   db.query('SELECT * FROM artists', idArtist, (err, results) => {
       if (err) {
          res.status(500).send("Erreur lors de la récupération des artistes");
          return;
@@ -130,8 +130,8 @@ router.delete('/artists/:id', (req, res) => {
 // - En tant qu'administrateur, je veux pouvoir accéder aux réservations
 
 router.get('/bookings', (req, res) => {
-   const idPlaylist = req.params.id;
-   db.query('SELECT * FROM bookings', idPlaylist, (err, results) => {
+   const idBooking = req.params.id;
+   db.query('SELECT * FROM bookings', idBooking, (err, results) => {
       if (err) {
          res.status(500).send("Erreur lors de la récupération des réservations");
          return;
@@ -147,8 +147,8 @@ router.get('/bookings', (req, res) => {
 // - En tant qu'administrateur, je veux pouvoir accéder aux messages reçus
 
 router.get('/messages', (req, res) => {
-   const idPlaylist = req.params.id;
-   db.query('SELECT * FROM messages', idPlaylist, (err, results) => {
+   const idMessage = req.params.id;
+   db.query('SELECT * FROM messages', idMessage, (err, results) => {
       if (err) {
          res.status(500).send("Erreur lors de la récupération des messages");
          return;
@@ -161,6 +161,7 @@ router.get('/messages', (req, res) => {
    });
 });
 
+// Créer un nouveau spectacle
 router.post('/shows', (req, res) => {
    const formData = req.body;
    db.query('INSERT INTO shows SET ?', formData, (err, results) => {
@@ -182,9 +183,11 @@ router.post('/shows', (req, res) => {
    });
 });
 
+// Récupérer tous les spectacles
+
 router.get('/shows', (req, res) => {
-   const idPlaylist = req.params.id;
-   db.query('SELECT * FROM shows', idPlaylist, (err, results) => {
+   const idShow = req.params.id;
+   db.query('SELECT * FROM shows', idShow, (err, results) => {
       if (err) {
          res.status(500).send("Erreur lors de la récupération des spectacles");
          return;
@@ -196,5 +199,23 @@ router.get('/shows', (req, res) => {
       res.status(200).json(results);
    });
 });
+
+// Récupérer tous les artistes par spectacle
+
+router.get('/shows/:id/artists', (req, res) => {
+   const idShow = req.params.id;
+   db.query('SELECT a.name, a.picture, a.skills FROM artists a JOIN show_artist sa ON sa.artist_id = a.id JOIN shows s on s.id = sa.show_id WHERE s.id = ?', idShow, (err, results) => {
+      if (err) {
+         res.status(500).send("Erreur lors de la récupération des artistes d'un spectacle");
+         return;
+      }
+      if (!results.length) {
+         res.status(404).send("Aucun résultat");
+         return;
+      }
+      res.status(200).json(results);
+   });
+});
+
 
 module.exports = router;
