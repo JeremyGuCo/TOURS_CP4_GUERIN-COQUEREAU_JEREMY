@@ -25,9 +25,5 @@ export class HeaderComponent implements OnInit {
     this.isShow = isAdmin;
   }
 
-  onOpenNav() {
-    this.openNav = !this.openNav;
-    this.closeNav = !this.closeNav;
-  }
 
 }

@@ -11,13 +11,14 @@ import { ShowsComponent } from './features/shows/shows.component';
 import { ArtistsComponent } from './features/artists/artists.component';
 import { BookingsComponent } from './features/bookings/bookings.component';
 import { ContactComponent } from './features/contact/contact.component';
-import { AdminComponent } from './features/admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistCardComponent } from './shared/artist-card/artist-card.component';
 import { FormsModule } from '@angular/forms';
 import { BookingAdminComponent } from './features/booking-admin/booking-admin.component';
 import { ShowCardComponent } from './shared/show-card/show-card.component';
 import { BookingCardComponent } from './shared/booking-card/booking-card.component';
+import { ContactAdminComponent } from './features/contact-admin/contact-admin.component';
+import { ArtistAdminComponent } from './features/artist-admin/artist-admin.component';
 
 
 @NgModule({
@@ -30,11 +31,12 @@ import { BookingCardComponent } from './shared/booking-card/booking-card.compone
     ArtistsComponent,
     BookingsComponent,
     ContactComponent,
-    AdminComponent,
     ArtistCardComponent,
     BookingAdminComponent,
     ShowCardComponent,
     BookingCardComponent,
+    ContactAdminComponent,
+    ArtistAdminComponent,
 
   ],
   imports: [

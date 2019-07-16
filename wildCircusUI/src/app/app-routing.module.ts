@@ -5,8 +5,9 @@ import { ShowsComponent } from './features/shows/shows.component';
 import { ArtistsComponent } from './features/artists/artists.component';
 import { BookingsComponent } from './features/bookings/bookings.component';
 import { ContactComponent } from './features/contact/contact.component';
-import { AdminComponent } from './features/admin/admin.component';
 import { BookingAdminComponent } from './features/booking-admin/booking-admin.component';
+import { ContactAdminComponent } from './features/contact-admin/contact-admin.component';
+import { ArtistAdminComponent } from './features/artist-admin/artist-admin.component';
 
 
 const routes: Routes = [
@@ -15,9 +16,9 @@ const routes: Routes = [
   { path: 'artists', component: ArtistsComponent },
   { path: 'booking', component: BookingsComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'admin', component: AdminComponent },
   { path: 'bookingAdmin', component: BookingAdminComponent },
-
+  { path: 'messageAdmin', component: ContactAdminComponent },
+  { path: 'artistAdmin', component: ArtistAdminComponent },
 ];
 
 @NgModule({
