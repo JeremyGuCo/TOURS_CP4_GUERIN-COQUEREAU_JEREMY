@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #7f8285;">
-  <a class="navbar-brand" href="#">Wild Circus</a>
+  <a class="navbar-brand" [routerLink]="[ '' ]">Wild Circus</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,19 +7,19 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Accueil</a>
+        <a class="nav-link" [routerLink]="[ '' ]">Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Spectacles</a>
+        <a class="nav-link" [routerLink]="[ 'shows' ]">Spectacles</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Artistes</a>
+        <a class="nav-link" [routerLink]="[ 'artists' ]">Artistes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Réservation</a>
+        <a class="nav-link" [routerLink]="[ 'booking' ]">Réservation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contacts</a>
+        <a class="nav-link" [routerLink]="[ 'contact' ]">Contacts</a>
       </li>
     </ul>
   </div>

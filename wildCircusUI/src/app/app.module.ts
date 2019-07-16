@@ -7,13 +7,23 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './features/home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { ShowsComponent } from './features/shows/shows.component';
+import { ArtistsComponent } from './features/artists/artists.component';
+import { BookingsComponent } from './features/bookings/bookings.component';
+import { ContactComponent } from './features/contact/contact.component';
+import { AdminComponent } from './features/admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ShowsComponent,
+    ArtistsComponent,
+    BookingsComponent,
+    ContactComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
