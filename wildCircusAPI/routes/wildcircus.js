@@ -216,4 +216,43 @@ router.get('/shows/:id/bookings', (req, res) => {
    });
 });
 
+// - En tant qu'utilisateur, je veux pouvoir envoyer un message à l'administrateur
+
+router.post('/messages', (req, res) => {
+   const formData = req.body;
+   db.query('INSERT INTO messages SET ?', formData, (err, results) => {
+      if (err) {
+         res.status(500).json("Erreur lors de l'enregistrement d'un nouveau message");
+         return
+      }
+      if (!results) {
+         res.status(400).json('Aucun résultat');
+         return;
+      }
+      db.query('SELECT * FROM messages WHERE id = ?', results.insertId, (err, results) => {
+         if (err) {
+            res.status(500).json();
+            return;
+         }
+         res.status(201).json(results[0]);
+      });
+   });
+});
+
+// - En tant qu'administrateur, je veux pouvoir accéder aux messages reçus
+
+router.get('/messages', (req, res) => {
+   db.query('SELECT * FROM messages', (err, results) => {
+      if (err) {
+         res.status(500).json("Erreur lors de la récupération des messages");
+         return;
+      }
+      if (!results.length) {
+         res.status(404).json("Aucun résultat");
+         return;
+      }
+      res.status(200).json(results);
+   });
+});
+
 module.exports = router;
