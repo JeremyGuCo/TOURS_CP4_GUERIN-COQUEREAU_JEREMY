@@ -1,0 +1,18 @@
+
+h1 {
+  width: auto;
+  padding: 6vw;
+
+  font-size: 6vw;
+  font-weight: 300;
+  text-align: center;
+
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 0.8s ease, opacity 1.6s ease;
+  user-select: none;
+}
+
+b {
+  font-weight: 700;
+}

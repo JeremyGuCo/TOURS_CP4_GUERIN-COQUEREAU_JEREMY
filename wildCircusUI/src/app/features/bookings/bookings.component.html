@@ -7,7 +7,7 @@
   <div class="col-5 m-5 text-center">
     <form #f="ngForm" (ngSubmit)="createBooking(f.value)">
       <div class="form-group">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6 mb-3 offset-md-3">
           <label for="validationName">Nom et Prénom</label>
           <input type="text" class="form-control" id="validationName" name="name" placeholder="Nom et prénom" ngModel>
         </div>
@@ -15,14 +15,13 @@
       <div class="form-group">
         <label for="ControlSelect">Choisir la date de mon spectacle</label>
         <select class="form-control" name="show_id" ngModel>
-          <option *ngFor="let show of shows" [value]="show.id">Le {{show.date | date}} à {{show.town}} </option>
+          <option *ngFor="let show of shows" [value]="show.id">Le {{show.date | date:'d/MM/yy '}} à {{show.town}} </option>
         </select>
       </div>
       <div class="form-group">
         <label for="FormNumber">Nous serons</label>
         <input class="form-control" type="number" name="number" id="FormNumber" ngModel>
       </div>
-      <p>Soit</p>
       <button type="submit" class="btn btn-success">Réserver mes places</button>
     </form>
   </div>

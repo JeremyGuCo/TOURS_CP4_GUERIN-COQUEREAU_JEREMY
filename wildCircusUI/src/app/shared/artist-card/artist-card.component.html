@@ -1,9 +1,14 @@
+<div class="row d-flex justify-content-center">
 <div *ngFor="let artist of artists">
-  <div class="card">
+  <div *ngIf="artists.length>0"class="card m-2">
     <div class="card-body">
       <h5 class="card-title">{{artist.name}}</h5>
       <p class="card-text">{{artist.skills}}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <img class="col" src={{artist.picture}}>
     </div>
   </div>
+</div>
+<div *ngIf="artists.length===0"class="card m-2">
+  Encore un peu d'attente !
+</div>
 </div>

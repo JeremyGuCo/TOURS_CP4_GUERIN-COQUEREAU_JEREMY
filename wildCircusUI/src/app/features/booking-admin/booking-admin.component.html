@@ -1,10 +1,7 @@
-<div *ngFor="let show of shows">
-   <div class="card m-5">
-     <div class="card-body">
-       <h5 class="card-title">{{show.date | date}}</h5>
-       <p class="card-text">{{show.town}}</p>
-       Réservations en cours
-       <app-booking-card [IDshow]="show.id"></app-booking-card>
-     </div>
-   </div>
- </div>
+<div class="text-center m-2">
+  <div *ngFor="let show of shows" class="bordered m-2">
+    <h5>Le {{show.date | date}}</h5>
+    <p>à {{show.town}}</p>
+    <app-booking-card  [IDshow]="show.id"></app-booking-card>
+  </div>
+</div>

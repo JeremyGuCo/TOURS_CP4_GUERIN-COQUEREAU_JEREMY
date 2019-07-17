@@ -34,8 +34,8 @@
   <a class="nav-link" [routerLink]="[ '' ]" (click)="admin()">Deconnexion</a>
 </div>
 
-<div class="mainOpen">
+<div [ngClass]="{'mainOpen': !isShow}">
   <router-outlet></router-outlet>
 </div>
 
-<app-footer (adminCon)="showNavbar($event)"></app-footer>
+<app-footer *ngIf="isShow" (adminCon)="showNavbar($event)"></app-footer>
