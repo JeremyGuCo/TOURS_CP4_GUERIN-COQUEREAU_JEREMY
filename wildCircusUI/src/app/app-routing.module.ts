@@ -8,6 +8,7 @@ import { ContactComponent } from './features/contact/contact.component';
 import { BookingAdminComponent } from './features/booking-admin/booking-admin.component';
 import { ContactAdminComponent } from './features/contact-admin/contact-admin.component';
 import { ArtistAdminComponent } from './features/artist-admin/artist-admin.component';
+import { ShowAdminComponent } from './features/show-admin/show-admin.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'bookingAdmin', component: BookingAdminComponent },
   { path: 'messageAdmin', component: ContactAdminComponent },
   { path: 'artistAdmin', component: ArtistAdminComponent },
+  { path: 'showAdmin', component: ShowAdminComponent },
 ];
 
 @NgModule({

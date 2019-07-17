@@ -199,6 +199,17 @@ router.get('/shows', (req, res) => {
    });
 });
 
+router.delete('/shows/:id', (req, res) => {
+   const id = req.params.id;
+   db.query('DELETE FROM shows WHERE id = ? ', id, err => {
+      if (err) {
+         res.status(500).json("Erreur lors de la suppression d'un spectacle");
+         return;
+      }
+      res.status(201).json()
+   })
+})
+
 // Récupérer tous les artistes par spectacle
 
 router.get('/shows/:id/artists', (req, res) => {

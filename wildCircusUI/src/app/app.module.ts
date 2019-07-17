@@ -21,6 +21,7 @@ import { ContactAdminComponent } from './features/contact-admin/contact-admin.co
 import { ArtistAdminComponent } from './features/artist-admin/artist-admin.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ShowAdminComponent } from './features/show-admin/show-admin.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     BookingCardComponent,
     ContactAdminComponent,
     ArtistAdminComponent,
+    ShowAdminComponent,
 
   ],
   imports: [

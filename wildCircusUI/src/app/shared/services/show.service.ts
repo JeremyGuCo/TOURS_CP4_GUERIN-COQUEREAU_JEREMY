@@ -22,6 +22,14 @@ export class ShowService {
 
   getShowByID(id: number): Observable<Show[]> {
     return this.http.get<Show[]>(`${this.api}/shows/${id}`);
-}
+  }
+
+  createShow(data): Observable<Show> {
+    return this.http.post<Show>(`${this.api}/shows`, data);
+  }
+
+  deleteShow(id: number): Observable<Show> {
+    return this.http.delete<Show>(`${this.api}/shows/${id}`);
+  }
 
 }
