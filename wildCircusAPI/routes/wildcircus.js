@@ -33,26 +33,20 @@ router.post('/bookings', (req, res) => {
    });
 });
 
-// - En tant qu'utilisateur, je veux pouvoir envoyer un message à l'administrateur
+// - En tant qu'administrateur, je veux pouvoir accéder aux réservations
 
-router.post('/messages', (req, res) => {
-   const formData = req.body;
-   db.query('INSERT INTO messages SET ?', formData, (err, results) => {
+router.get('/bookings', (req, res) => {
+   const idBooking = req.params.id;
+   db.query('SELECT * FROM bookings', idBooking, (err, results) => {
       if (err) {
-         res.status(500).json("Erreur lors de l'enregistrement d'un nouveau message");
-         return
-      }
-      if (!results) {
-         res.status(400).json('Aucun résultat');
+         res.status(500).json("Erreur lors de la récupération des réservations");
          return;
       }
-      db.query('SELECT * FROM messages WHERE id = ?', results.insertId, (err, results) => {
-         if (err) {
-            res.status(500).json();
-            return;
-         }
-         res.status(201).json(results[0]);
-      });
+      if (!results.length) {
+         res.status(404).json("Aucun résultat");
+         return;
+      }
+      res.status(200).json(results);
    });
 });
 
@@ -96,7 +90,6 @@ router.post('/artists', (req, res) => {
    });
 });
 
-
 router.put('/artists/:id', (req, res) => {
    const id = req.params.id;
    const formData = req.body;
@@ -125,40 +118,6 @@ router.delete('/artists/:id', (req, res) => {
       res.status(201).json()
    })
 })
-
-
-// - En tant qu'administrateur, je veux pouvoir accéder aux réservations
-
-router.get('/bookings', (req, res) => {
-   const idBooking = req.params.id;
-   db.query('SELECT * FROM bookings', idBooking, (err, results) => {
-      if (err) {
-         res.status(500).json("Erreur lors de la récupération des réservations");
-         return;
-      }
-      if (!results.length) {
-         res.status(404).json("Aucun résultat");
-         return;
-      }
-      res.status(200).json(results);
-   });
-});
-
-// - En tant qu'administrateur, je veux pouvoir accéder aux messages reçus
-
-router.get('/messages', (req, res) => {
-   db.query('SELECT * FROM messages', (err, results) => {
-      if (err) {
-         res.status(500).json("Erreur lors de la récupération des messages");
-         return;
-      }
-      if (!results.length) {
-         res.status(404).json("Aucun résultat");
-         return;
-      }
-      res.status(200).json(results);
-   });
-});
 
 // Créer un nouveau spectacle
 router.post('/shows', (req, res) => {
