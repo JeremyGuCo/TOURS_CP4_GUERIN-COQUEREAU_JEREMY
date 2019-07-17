@@ -19,6 +19,8 @@ import { ShowCardComponent } from './shared/show-card/show-card.component';
 import { BookingCardComponent } from './shared/booking-card/booking-card.component';
 import { ContactAdminComponent } from './features/contact-admin/contact-admin.component';
 import { ArtistAdminComponent } from './features/artist-admin/artist-admin.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { ArtistAdminComponent } from './features/artist-admin/artist-admin.compo
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

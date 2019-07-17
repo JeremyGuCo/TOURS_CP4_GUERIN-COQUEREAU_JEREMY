@@ -3,6 +3,7 @@ import { ArtistService } from 'src/app/shared/services/artist.service';
 import { Artist } from 'src/app/shared/models/artist.model';
 import { error } from 'util';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-artist-admin',
@@ -17,8 +18,13 @@ export class ArtistAdminComponent implements OnInit {
 
   constructor(
     public artistService: ArtistService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private toastr: ToastrService,
   ) { }
+
+
+
+
 
   ngOnInit() {
     this.artistService.getAllArtists().subscribe(allArtist => this.artists = allArtist)
@@ -33,25 +39,35 @@ export class ArtistAdminComponent implements OnInit {
     this.update = !this.update;
   }
 
-  cancelArtist(){
+  cancelArtist() {
     this.isCreate = !this.isCreate
   }
 
   deleteArtist(id, index) {
-    this.artistService.deleteArtistByID(id).subscribe();
-    this.artists.splice(index, 1)
+    confirm('Voulez-vous supprimer l\'artiste?')
+    if (confirm) {
+      this.artistService.deleteArtistByID(id).subscribe();
+      this.artists.splice(index, 1);
+      this.toastr.success('Artiste supprimé');
+    }
+
   }
 
-  createArtist(artist: Artist){
-    this.artistService.createArtist(artist).subscribe((newArtist) => this.artists.push(newArtist),
-    (err) => console.log(err))
+  createArtist(artist: Artist) {
+    this.artistService.createArtist(artist).subscribe(
+      newArtist => {
+        this.artists.push(newArtist);
+        this.toastr.success('Nouvel Artiste enregistré');
+      },
+      (err) => { this.toastr.success('Enregistrement impossible') }
+    )
   }
 
-  create(){
+  create() {
     this.isCreate = true
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 }
