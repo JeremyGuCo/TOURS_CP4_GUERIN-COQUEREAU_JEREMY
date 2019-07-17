@@ -1,9 +1,12 @@
+<div class="row d-flex justify-content-center">
 <div *ngFor="let artist of artists">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{artist.name}}</h5>
-      <p class="card-text">{{artist.skills}}</p>
-      <img src={{artist.picture}}/>
-    </div>
+<div class="card m-3 text-white bg-secondary">
+  <div class="card-body">
+    <h5 class="card-title">{{artist.name}}</h5>
+    <p class="card-text"> Ses spécialités :
+      {{artist.skills}}</p>
   </div>
+  <img class="card-img-bottom" src={{artist.picture}} alt="Card image cap">
+</div>
+</div>
 </div>

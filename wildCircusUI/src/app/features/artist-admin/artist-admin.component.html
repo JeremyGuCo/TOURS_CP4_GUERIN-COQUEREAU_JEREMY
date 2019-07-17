@@ -1,68 +1,103 @@
-<table class="table table-bordered table-dark m-4">
-  <thead>
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Compétences</th>
-      <th scope="col">Image</th>
-    </tr>
-  </thead>
-  <tbody>
-    <ng-container *ngFor="let artist of artists; let i = index">
+<div class="table-responsive">
+  <table class="table table-bordered table-dark m-4 table-sm">
+    <thead>
       <tr>
-        <th scope="row">{{artist.name}}</th>
-        <td>{{artist.skills}}</td>
-        <td>{{artist.picture}}</td>
-        <td class="text-center">
-          <ng-template #content let-modal>
-            <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
+        <th scope="col">Nom</th>
+        <th scope="col">Compétences</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let artist of artists; let i = index">
+        <tr>
+          <th scope="row">{{artist.name}}</th>
+          <td>{{artist.skills}}</td>
+          <td>{{ (artist.picture.length>6)? (artist.picture | slice:0:25)+'..':(artist.picture) }}</td>
+          <td class="text-center">
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
                 <div class="card m-5 text-center">
-                    <div class="card-body">
-                      <h5 class="card-title">{{artist.name}}</h5>
-                      <div class="row d-flex justify-content-center">
-                        <label class="col-sm-6 text-center">Nom</label>
-                        <input type="text" [(ngModel)]="artist.name" class="input-group m-3 text-center col-sm-6">
-                      </div>
-                      <p class="card-text">{{artist.skills}}</p>
-                      <div class="row d-flex justify-content-center">
-                        <label class="col-sm-6 text-center">Compétences</label>
-                        <input type="text" [(ngModel)]="artist.skills" class="input-group m-3 text-center col-sm-6">
-                      </div>
-                      <img class="col" src={{artist.picture}}>
-                      <div class="row d-flex justify-content-center">
-                        <label class="col-sm-6 text-center">Photo</label>
-                        <input type="text" [(ngModel)]="artist.picture" class="input-group m-3 text-center col-sm-6">
-                      </div>
+                  <div class="card-body">
+                    <div class="row d-flex justify-content-center">
+                      <label class="col-sm-6 text-center">Nom</label>
+                      <input type="text" [(ngModel)]="artist.name" class="input-group m-3 text-center col-sm-6">
                     </div>
-                    <div class="d-flex justify-content-center">
-                      <button type="button" class="btn btn-danger  m-3" (click)="deleteArtist(artist.id, i)">Supprimer
-                        l'artiste</button>
-                      <button type="submit" class="btn btn-info  m-3" (click)="modifyArtist(artist); modal.close()">Enregistrer les
-                        modifications</button>
-                      <button type="button" class="btn btn-warning m-3" (click)="updateArtist(); modal.close()">Annuler les
-                        modifications</button>
+                    <div class="row d-flex justify-content-center">
+                      <label class="col-sm-6 text-center">Compétences</label>
+                      <input type="text" [(ngModel)]="artist.skills" class="input-group m-3 text-center col-sm-6">
+                    </div>
+                    <img class="col" src={{artist.picture}}>
+                    <div class="row d-flex justify-content-center">
+                      <label class="col-sm-6 text-center">Photo</label>
+                      <input type="text" [(ngModel)]="artist.picture" class="input-group m-3 text-center col-sm-6">
                     </div>
                   </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-danger  m-3" (click)="deleteArtist(artist.id, i)">Supprimer
+                      l'artiste</button>
+                    <button type="submit" class="btn btn-info  m-3"
+                      (click)="modifyArtist(artist); modal.close()">Enregistrer les
+                      modifications</button>
+                    <button type="button" class="btn btn-warning m-3" (click)="updateArtist(); modal.close()">Annuler
+                      les
+                      modifications</button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+              </div>
+            </ng-template>
+            <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Modifier</button>
+            <hr>
+            <pre>{{closeResult}}</pre>
+            <button class="m-2 btn btn-danger" (click)="deleteArtist(artist.id, i)">Supprimer</button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+<div class="text-center">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #f="ngForm">
+        <div class="card m-5 text-center">
+          <div class="card-body">
+            <div class="row d-flex justify-content-center">
+              <label class="col-sm-6 text-center">Nom</label>
+              <input type="text" ngModel name="name" class="input-group m-3 text-center col-sm-6">
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+            <div class="row d-flex justify-content-center">
+              <label class="col-sm-6 text-center">Compétences</label>
+              <input type="text" ngModel name="skills" class="input-group m-3 text-center col-sm-6">
             </div>
-          </ng-template>
-
-          <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Modifier</button>
-
-          <hr>
-
-          <pre>{{closeResult}}</pre>
-          <button class="m-2 btn btn-danger">Supprimer</button>
-        </td>
-      </tr>
-
-    </ng-container>
-  </tbody>
-</table>
+            <div class="row d-flex justify-content-center">
+              <label class="col-sm-6 text-center">Photo</label>
+              <input type="text" ngModel name="picture" class="input-group m-3 text-center col-sm-6">
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-info  m-3" (click)="createArtist(f.value); modal.close()">Enregistrer </button>
+            <button type="button" class="btn btn-warning m-3" (click)="updateArtist(); modal.close()">Annuler</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Ajouter un artiste</button>
+  <hr>
+  <pre>{{closeResult}}</pre>
+</div>

@@ -1,10 +1,10 @@
-<main id="main" class="loading"> 
-<h1 class="ml-2">Nos prochains <b>spectacles :</b></h1>
-</main>
 
+<h1 class="ml-2">Nos prochains <b>spectacles :</b></h1>
+
+<div class="container">
 <div class="row d-flex justify-content-center mt-5">
 <div *ngFor="let show of shows">
-  <div class="card m-3">
+  <div class="card m-3 bg-light">
     <div class="card-body text-center">
       <h5 class="card-title">Le {{show.date | date:'d/MM/yy '}}</h5>
       <p class="card-text">à {{show.town}}</p>
@@ -12,5 +12,6 @@
       <app-artist-card [IDshow]="show.id"></app-artist-card>
     </div>
   </div>
+</div>
 </div>
 </div>

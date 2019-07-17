@@ -43,7 +43,8 @@ export class ArtistAdminComponent implements OnInit {
   }
 
   createArtist(artist: Artist){
-    this.artistService.createArtist(artist).subscribe((newArtist) => this.artists.push(newArtist))
+    this.artistService.createArtist(artist).subscribe((newArtist) => this.artists.push(newArtist),
+    (err) => console.log(err))
   }
 
   create(){
