@@ -30,7 +30,12 @@ export class ArtistAdminComponent extends ArtistsComponent {
   }
 
   modifyArtist(Artist: Artist) {
-    this.artistService.updateArtistByID(Artist.id, Artist).subscribe();
+    this.artistService.updateArtistByID(Artist.id, Artist).subscribe(()=>
+    {
+      this.toastr.success('Modification résussie')
+    },
+    (err)=>this.toastr.warning('Modification impossible')
+    );
     this.update = !this.update;
   }
 
@@ -46,7 +51,7 @@ export class ArtistAdminComponent extends ArtistsComponent {
         this.artists.splice(index, 1);
         this.toastr.success('Artiste supprimé');
       },
-      (err) => this.toastr.success('Suppression impossible'));
+      (err) => this.toastr.warning('Suppression impossible'));
     }
 
   }
@@ -57,7 +62,7 @@ export class ArtistAdminComponent extends ArtistsComponent {
         this.artists.push(newArtist);
         this.toastr.success('Nouvel Artiste enregistré');
       },
-      (err) => { this.toastr.success('Enregistrement impossible') }
+      (err) => { this.toastr.warning('Enregistrement impossible') }
     )
   }
 
