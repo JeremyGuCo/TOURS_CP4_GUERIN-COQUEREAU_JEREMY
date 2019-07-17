@@ -4,13 +4,14 @@ import { Artist } from 'src/app/shared/models/artist.model';
 import { error } from 'util';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { ArtistsComponent } from '../artists/artists.component';
 
 @Component({
   selector: 'app-artist-admin',
   templateUrl: './artist-admin.component.html',
   styleUrls: ['./artist-admin.component.scss']
 })
-export class ArtistAdminComponent implements OnInit {
+export class ArtistAdminComponent extends ArtistsComponent {
 
   public update: boolean = false;
   public artists: Artist[] = [];
@@ -20,14 +21,8 @@ export class ArtistAdminComponent implements OnInit {
     public artistService: ArtistService,
     private modalService: NgbModal,
     private toastr: ToastrService,
-  ) { }
-
-
-
-
-
-  ngOnInit() {
-    this.artistService.getAllArtists().subscribe(allArtist => this.artists = allArtist)
+  ) { 
+    super(artistService)
   }
 
   updateArtist() {
@@ -46,9 +41,12 @@ export class ArtistAdminComponent implements OnInit {
   deleteArtist(id, index) {
     confirm('Voulez-vous supprimer l\'artiste?')
     if (confirm) {
-      this.artistService.deleteArtistByID(id).subscribe();
-      this.artists.splice(index, 1);
-      this.toastr.success('Artiste supprimé');
+      this.artistService.deleteArtistByID(id).subscribe(() =>
+      {
+        this.artists.splice(index, 1);
+        this.toastr.success('Artiste supprimé');
+      },
+      (err) => this.toastr.success('Suppression impossible'));
     }
 
   }

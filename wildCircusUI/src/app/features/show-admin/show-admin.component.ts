@@ -41,7 +41,8 @@ export class ShowAdminComponent implements OnInit {
         () => {
           this.toastr.success('Suppression enregistrée');
           this.shows.splice(i, 1);
-        }
+        },
+        (err)=>this.toastr.warning('Suppression impossible')
       )
     }
   }

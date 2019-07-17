@@ -115,7 +115,7 @@ router.delete('/artists/:id', (req, res) => {
          res.status(500).json("Erreur lors de la suppression d'un artiste");
          return;
       }
-      res.status(201).json()
+      res.status(204).end()
    })
 })
 
@@ -165,7 +165,7 @@ router.delete('/shows/:id', (req, res) => {
          res.status(500).json("Erreur lors de la suppression d'un spectacle");
          return;
       }
-      res.status(201).json()
+      res.status(204).json()
    })
 })
 
