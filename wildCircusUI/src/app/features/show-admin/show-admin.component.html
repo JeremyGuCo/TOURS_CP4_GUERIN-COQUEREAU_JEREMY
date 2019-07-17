@@ -1,15 +1,15 @@
 <h5 class="text-center">Prochains spectacles</h5>
 <div class="container text-center">
 <ul class="list-group" *ngFor="let show of shows; let i = index">
-  <li class="list-group-item">Le {{show.date | date:'d/MM/yy '}}</li>
-  <li class="list-group-item">à {{show.town}}</li>
+  <li class="list-group-item list-group-item-secondary">Le {{show.date | date:'d/MM/yy '}}</li>
+  <li class="list-group-item list-group-item-secondary">à {{show.town}}</li>
   <div class="d-flex justify-content-center">
   <button class="btn btn-danger m-2" (click)="deleteShow(show.id, i)">Supprimer la date</button>
 </div>
 </ul>
 </div>
 <form #f="ngForm" (ngSubmit)="createShow(f.value)">
-  <div class="card m-5 text-center">
+  <div class="card text-white bg-secondary m-5 text-center">
     <div class="card-body">
       <div class="row d-flex justify-content-center">
         <label class="col-sm-6 text-center">Date</label>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-info  m-3">Enregistrer un
+      <button type="submit" class="btn btn-dark m-3">Enregistrer un
         nouveau spectacle</button>
     </div>
   </div>

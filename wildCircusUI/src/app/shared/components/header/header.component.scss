@@ -10,11 +10,16 @@
    transition: 0.5s;
    padding-top: 60px;
  }
-
+ *{
+  font-family: 'DM Serif Display', serif;
+ }
  h2 {
    padding: 8px 8px 8px 32px;
  }
 
+ li{
+  font-size: 2rem;
+ }
 
  .side-nav a {
    padding: 8px 8px 8px 32px;

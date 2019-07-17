@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive-md">
   <table class="table table-bordered table-dark m-4 table-sm">
     <thead>
       <tr>
@@ -47,10 +47,9 @@
                 </div>
               </div>
             </ng-template>
-            <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Modifier</button>
-            <hr>
+            <button class="btn btn-secondary" (click)="open(content)">Modifier</button>
             <pre>{{closeResult}}</pre>
-            <button class="m-2 btn btn-danger" (click)="deleteArtist(artist.id, i)">Supprimer</button>
+            <button class="btn btn-danger" (click)="deleteArtist(artist.id, i)">Supprimer</button>
           </td>
         </tr>
       </ng-container>
@@ -90,7 +89,7 @@
       </form>
     </div>
   </ng-template>
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Ajouter un artiste</button>
+  <button class="btn btn-light" (click)="open(content)">Ajouter un artiste</button>
   <hr>
   <pre>{{closeResult}}</pre>
 </div>
