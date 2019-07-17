@@ -1,16 +1,15 @@
-  <table class="table table-bordered table-dark m-2">
-      <thead>
-        <tr>
-          <th scope="col">Messages</th>
-          <th scope="col">Auteurs</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let message of messages">
-          <tr>
-              <th scope="row">{{message.content}}</th>
-              <td>{{message.author}}</td>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
+<div class="row d-flex justify-content-center ">
+
+  <ng-container *ngFor="let message of messages; let i = index">
+    <div class="card text-white text-center bg-secondary m-3 col-4">
+        <div class="card-header">Message n°{{i}}</div>
+        <div class="card-body">
+          <h5 class="card-header">Auteur:</h5>
+          <p class="card-text"> {{message.author}}</p>
+          <h5 class="card-header">Message:</h5>
+          <p class="card-text">{{message.content}}</p>
+        </div>
+      </div>
+    </ng-container>
+
+</div>

@@ -1,7 +1,7 @@
 <div class="text-center m-2">
   <div *ngFor="let show of shows" class="bordered m-2">
-    <h5>Le {{show.date | date}}</h5>
-    <p>à {{show.town}}</p>
+    <h5>Le {{show.date | date:'d/MM/yy '}}</h5>
+    <h5>à {{show.town}}</h5>
     <app-booking-card  [IDshow]="show.id"></app-booking-card>
   </div>
 </div>
