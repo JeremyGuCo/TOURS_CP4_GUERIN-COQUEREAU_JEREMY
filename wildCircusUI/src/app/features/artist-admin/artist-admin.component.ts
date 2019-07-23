@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtistService } from 'src/app/shared/services/artist.service';
 import { Artist } from 'src/app/shared/models/artist.model';
-import { error } from 'util';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ArtistsComponent } from '../artists/artists.component';
